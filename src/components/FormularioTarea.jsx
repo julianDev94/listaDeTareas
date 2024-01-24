@@ -5,11 +5,18 @@ import { useState } from "react";
 const FormularioTarea = () => {
 
   const [tarea, setTarea] = useState('');
+  const [tareas, setTareas] = useState([]);
 
+  const handlerSubmit = (e) =>{
+    e.preventDefault();
+    console.log('Dentro de la funcion submit');
+    setTareas([...tareas,tarea]);
+    setTarea('');
+  }
 
   return (
     <section>
-      <Form>
+      <Form onSubmit={handlerSubmit}>
         <Form.Group
           className="mb-3 d-flex"
           controlId="exampleForm.ControlInput1"
